@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="mn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Эрдэнэт хот дахь байр, хаус, газрын зарууд. Агент Золбоо, утас 8836 0522.">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Etulhudluh.mn</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: sticky search bar over a responsive card grid; a listing opens as its own full view (#zar-ID). */
+:root{
+  --bg:#F5F7FA; --surface:#FFFFFF; --ink:#13203B; --muted:#5B6782; --line:#DDE3EC;
+  --accent:#1F55C9; --accent-ink:#FFFFFF; --accent-soft:#E6EDFB; --gold:#C98A0B; --ok:#1E8A5A;
+  --viber:#7360F2; --fb:#1877F2;
+  --display:"Unbounded","Inter",system-ui,sans-serif; --body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --r:14px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0E1424; --surface:#161E33; --ink:#E8EDF7; --muted:#9AA6C1; --line:#28324B;
+  --accent:#6E98F5; --accent-ink:#0B1222; --accent-soft:#1D2A4A; --gold:#F0B940; --ok:#4CC28C; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1424; --surface:#161E33; --ink:#E8EDF7; --muted:#9AA6C1; --line:#28324B;
+  --accent:#6E98F5; --accent-ink:#0B1222; --accent-soft:#1D2A4A; --gold:#F0B940; --ok:#4CC28C; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;letter-spacing:-.01em}
+button,select,input{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+a{color:var(--accent)}
+
+/* header */
+header.top{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+.top .wrap{display:flex;align-items:center;gap:12px;padding-block:12px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);margin-right:auto}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:grid;place-items:center}
+.logo b{font-family:var(--display);font-size:17px}
+.logo small{display:block;color:var(--muted);font-size:12px;line-height:1.1}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:10px;padding:10px 16px;font-weight:600;text-decoration:none;cursor:pointer;white-space:nowrap}
+.btn-call{background:var(--accent);color:var(--accent-ink)}
+.btn-ghost{background:var(--accent-soft);color:var(--accent)}
+.btn-viber{background:var(--viber);color:#fff}
+.btn-fb{background:var(--fb);color:#fff}
+.btn svg{width:18px;height:18px;flex:none}
+
+/* intro */
+.intro{padding-block:28px 8px;display:grid;gap:6px}
+.intro h1{font-size:clamp(22px,4vw,32px)}
+.intro p{margin:0;color:var(--muted);max-width:62ch}
+
+/* filters */
+.filters{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:grid;gap:12px;margin-block:16px}
+.deal{display:flex;gap:6px;background:var(--bg);padding:4px;border-radius:12px;width:max-content;max-width:100%}
+.deal button{border:0;background:transparent;padding:8px 16px;border-radius:9px;font-weight:600;cursor:pointer;color:var(--muted)}
+.deal button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.frow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.field{display:grid;gap:4px;min-width:0}
+.field label,.field .lbl{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.field select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.rooms{display:flex;gap:6px;flex-wrap:wrap}
+.rooms button{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:9px 0;min-width:44px;flex:1;font-weight:600;cursor:pointer}
+.rooms button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.fbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.count{font-weight:600}
+.count span{color:var(--muted);font-weight:400}
+.linkbtn{background:none;border:0;color:var(--accent);font-weight:600;cursor:pointer;padding:4px}
+.sort{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:14px}
+.sort select{padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px;padding-bottom:40px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(19,32,59,.10)}
+.ph{position:relative;aspect-ratio:4/3;max-width:100%;background:var(--accent-soft)}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.tag{position:absolute;top:10px;left:10px;display:flex;gap:6px;flex-wrap:wrap}
+.pill{font-size:12px;font-weight:700;padding:4px 9px;border-radius:999px;background:rgba(255,255,255,.92);color:#13203B}
+.pill.rent{background:var(--gold);color:#1B1300}
+.pill.sale{background:var(--accent);color:#fff}
+.pill.sample{background:rgba(19,32,59,.75);color:#fff;font-weight:600}
+.photos-n{position:absolute;right:10px;bottom:10px;font-size:12px;font-weight:600;background:rgba(19,32,59,.72);color:#fff;padding:3px 8px;border-radius:999px}
+.cb{padding:14px 16px 16px;display:grid;gap:8px;flex:1;align-content:start}
+.price{font-family:var(--display);font-size:20px;font-weight:700;font-variant-numeric:tabular-nums}
+.price small{font-family:var(--body);font-size:13px;color:var(--muted);font-weight:500}
+.ctitle{font-weight:600;font-size:15px;line-height:1.35}
+.loc{color:var(--muted);font-size:14px;display:flex;gap:6px;align-items:center}
+.loc svg{width:15px;height:15px;flex:none}
+.specs{display:flex;gap:14px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:10px;margin-top:2px;font-size:14px;font-variant-numeric:tabular-nums}
+.specs b{font-weight:600}
+.empty{grid-column:1/-1;text-align:center;padding:48px 16px;color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:var(--r)}
+
+/* detail */
+.back{display:inline-flex;align-items:center;gap:6px;margin-block:18px 12px;text-decoration:none;font-weight:600}
+.detail{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);grid-template-areas:"gal info" "more info";gap:24px;padding-bottom:48px;align-items:start}
+.gallery{grid-area:gal}.info{grid-area:info}.more{grid-area:more;display:grid;gap:18px;min-width:0}
+.gallery{display:grid;gap:8px;min-width:0}
+.gmain{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;max-width:100%;background:#1A2236}
+.gmain img{width:100%;height:100%;object-fit:contain;display:block}
+.gnav{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.9);color:#13203B;font-size:22px;cursor:pointer;display:grid;place-items:center}
+.gnav.prev{left:10px}.gnav.next{right:10px}
+.gcount{position:absolute;bottom:10px;right:10px;background:rgba(19,32,59,.72);color:#fff;font-size:13px;padding:3px 10px;border-radius:999px}
+.thumbs{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+.thumbs button{flex:none;width:88px;aspect-ratio:4/3;border-radius:8px;overflow:hidden;border:2px solid transparent;padding:0;cursor:pointer;background:none}
+.thumbs button[aria-current="true"]{border-color:var(--accent)}
+.thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+.info{display:grid;gap:18px;min-width:0}
+.dhead{display:grid;gap:8px}
+.dhead h1{font-size:clamp(20px,3vw,26px)}
+.dprice{font-family:var(--display);font-size:clamp(24px,4vw,32px);font-weight:700;font-variant-numeric:tabular-nums}
+.ppm{color:var(--muted);font-size:14px}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.facts div{background:var(--surface);padding:10px 12px;display:grid;gap:2px}
+.facts dt{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+.facts dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums}
+.desc h2,.feat h2{font-size:16px;margin-bottom:8px}
+.desc p{margin:0;max-width:65ch;white-space:pre-line}
+.feat ul{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
+.feat li{background:var(--accent-soft);color:var(--ink);padding:6px 12px;border-radius:999px;font-size:14px}
+.units h2{font-size:16px;margin-bottom:8px}
+.units h3{font-size:14px;margin:14px 0 6px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.units table{width:100%;table-layout:fixed;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:15px}
+.units th,.units td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)}
+.units th{font-size:12px;color:var(--muted);font-weight:600}
+.units td.num{text-align:right;white-space:nowrap}.units th.num{text-align:right}
+.units .kind{display:inline-block;background:var(--accent-soft);padding:2px 8px;border-radius:999px;font-size:13px}
+.contact{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 80px)}
+.agent{display:flex;gap:12px;align-items:center}
+.avatar{width:52px;height:52px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:20px;flex:none}
+.agent b{display:block}
+.agent span{color:var(--muted);font-size:14px}
+.phone{display:flex;align-items:center;justify-content:space-between;gap:8px;background:var(--bg);border-radius:10px;padding:10px 12px}
+.phone strong{font-family:var(--display);font-size:20px;letter-spacing:.02em;user-select:all;font-variant-numeric:tabular-nums}
+.copy{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 10px;font-size:13px;font-weight:600;cursor:pointer}
+.cta{display:grid;gap:8px}
+.cta .btn{width:100%;padding:13px 16px;font-size:16px}
+.cta2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.note{font-size:13px;color:var(--muted);margin:0}
+.code{font-size:13px;color:var(--muted)}
+
+footer{border-top:1px solid var(--line);background:var(--surface)}
+footer .wrap{padding-block:20px;display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap;color:var(--muted);font-size:14px}
+
+/* mobile bottom bar on detail */
+.mbar{display:none}
+@media (max-width:860px){
+  .detail{grid-template-columns:minmax(0,1fr);grid-template-areas:"gal" "info" "more"}
+  .contact{position:static}
+  .frow{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .mbar{display:flex;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--surface);border-top:1px solid var(--line);padding-top:10px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .mbar .btn{flex:1}
+  body.has-mbar{padding-bottom:76px}
+}
+@media (max-width:520px){
+  .top .call-top span{display:none}
+  .frow{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .grid{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){.card{transition:none}.card:hover{transform:none}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#">
+      <span class="logo-mark" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span>
+      <span><b>Etulhudluh.mn</b><small id="agentTag"></small></span>
+    </a>
+    <a class="btn btn-call call-top" id="topCall" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span id="topPhone"></span></a>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr"></span> Etulhudluh.mn · <span id="footAgent"></span></span>
+    <span id="footContact"></span>
+  </div>
+</footer>
+
+<script>
+/* =====================================================================
+   1) ХОЛБОО БАРИХ МЭДЭЭЛЭЛ — энд өөрийнхөө мэдээллийг бичнэ
+   ===================================================================== */
+const AGENT = {
+  name: "Золбоо",
+  title: "Үл хөдлөх хөрөнгийн агент",
+  phone: "8836 0522",
+  viber: "97688360522",          // улсын код + дугаар, хоосон зай байхгүй
+  facebook: "https://www.facebook.com/AgentZolboo",
+  email: ""
+};
+
+/* =====================================================================
+   2) ЗАРУУД — шинэ зар нэмэхдээ доорх нэг блокийг хуулж, утгыг нь солино
+      deal:  "Худалдах" эсвэл "Түрээслэх"
+      type:  "Орон сууц", "Хаус", "Хашаа байшин", "Газар", "Оффис"
+      price: нийт үнэ, зөвхөн тоо (₮). Түрээс бол сарын төлбөр.
+      price_m2: 1м²-ийн үнэ (₮). Нийт үнэ мэдэгдэхгүй бол price: null гээд үүнийг бичнэ.
+      photos: ["zurag/1.jpg", "zurag/2.jpg"]  — хоосон бол жишээ зураг гарна
+   ===================================================================== */
+const LISTINGS = [
+  { id: 32, deal: "Худалдах", type: "Орон сууц", district: "Эрдэнэт", area_name: "Sky Residence",
+    title: "Sky Residence: 55м² 2 өрөө, 73.5м² 3 өрөө", price: null, price_m2: 4000000, rooms: 0, size: null, floor: "", year: null,
+    price_note: "Хоёр айлд 1м² нь 4 сая₮",
+    payment: "", features: ["Шинэ барилга", "2 өрөө (4-р давхар)", "3 өрөө (5-р давхар)", "Шилэн фасадтай"],
+    description: "Sky Residence байранд 2 айл зарагдана: 4-р давхарт 55м² 2 өрөө, 5-р давхарт 73.5м² 3 өрөө.\n\nҮнэ: 1м² нь 4 сая₮.\n«Зарагдах айлууд» хүснэгтээс давхар, талбайг харна уу.",
+    units_head: ["Өрөө", "1м² үнэ"],
+    units: [ { name: "Зарагдах айлууд", rows: [ { no: "2 өрөө", floor: "4", size: 55, kind: "4 сая₮" }, { no: "3 өрөө", floor: "5", size: 73.5, kind: "4 сая₮" } ] } ],
+    photos: ["zurag/sky-residence/1.jpg"] },
+  { id: 31, deal: "Худалдах", type: "Орон сууц", district: "Эрдэнэт", area_name: "Хан Жаргалант",
+    title: "Хан Жаргалант: шинэ 2 ба 3 өрөө байрууд (55–73м²)", price: null, price_m2: 4300000, rooms: 0, size: null, floor: "", year: null,
+    price_note: "2 өрөө 1м² нь 4.3 сая₮ · 3 өрөө 1м² нь 4.5 сая₮",
+    payment: "", features: ["Утаагүй бүсэд", "Үйлчилгээний төвлөрсөн талбайтай", "Орчин үеийн интерьер, тоноглолтой", "Төвийн байршил, үнэ цэнэ өснө", "Шинэ барилга"],
+    description: "Хан Жаргалант байранд 2 болон 3 өрөө байрнууд зарагдана. Утаагүй бүсэд, төвийн байршилтай тул үнэ цэнэ нь өсөх байр. Үйлчилгээний төвлөрсөн талбайтай, орчин үеийн интерьер, тоноглолтой.\n\nҮнэ: 3 өрөө 1м² нь 4.5 сая₮, 2 өрөө 1м² нь 4.3 сая₮.\n«Зарагдах айлууд» хүснэгтээс давхар, талбайг харна уу.",
+    units_head: ["Өрөө", "1м² үнэ"],
+    units: [
+      { name: "3 өрөө", rows: [ { no: "3 өрөө", floor: "15", size: 64.04, kind: "4.5 сая₮" }, { no: "3 өрөө", floor: "11", size: 72.93, kind: "4.5 сая₮" } ] },
+      { name: "2 өрөө", rows: [ { no: "2 өрөө", floor: "7", size: 55, kind: "4.3 сая₮" } ] } ],
+    photos: [1,2].map(n => "zurag/han-jargalant/" + n + ".jpg") },
+  { id: 30, deal: "Худалдах", type: "Хаус", district: "Эрдэнэт", area_name: "Дэнж, Петровисын баруун урд",
+    title: "Дэнжид цутгамал 115.6м² байшин, 700м² газартай", price: 120000000, rooms: 0, size: 115.6, floor: "", year: 2023,
+    price_note: "Үнэ буурсан: 125 сая₮ → 120 сая₮ · 30-40 саяын машин бартерт авна",
+    payment: "30-40 саяын машин бартерт авч болно", features: ["Бүрэн цутгамал байшин", "3 жилийн өмнө баригдсан", "Газар 700м² (эзэмших 2037 он хүртэл)", "Цахилгаан бойлероор халдаг (өвөл сардаа ихдээ 400 мянга)", "1 машины гараж, дээрээ террастай", "Бохир соруулдаг", "Ванн, 00 дотроо", "Машин бартер боломжтой"],
+    description: "Дэнжийн Петровисын баруун урд байрлах бүрэн цутгамал 115.6м² байшин, 700м² газартай. 3 жилийн өмнө баригдсан. Газрын эзэмших хугацаа 2037 онд дуусна.\n\nЦахилгаанаар, бойлероор халдаг. Өвлийн сард цахилгааны төлбөр хамгийн ихдээ 400 мянган ₮ гардаг. Нэг машины гараштай, гарашийн дээр террастай. Бохироо соруулдаг.\n\nҮнэ 125 саяас 120 сая₮ болж буурсан.\n30-40 саяын машиныг бартерт авч болно.",
+    photos: Array.from({length: 11}, (_, i) => "zurag/denj-haus/" + (i + 1) + ".jpg") },
+  { id: 29, deal: "Худалдах", type: "Орон сууц", district: "Эрдэнэт", area_name: "Гранд гарден, 7-р блок",
+    title: "Гранд гарден 7-р блокт шинэ 75м² 3 өрөө (10, 11, 12-р давхар)", price: null, price_m2: 3800000, rooms: 3, size: 75, floor: "10, 11, 12-р давхар", year: null,
+    price_note: "3 давхарт сонголттой",
+    payment: "", features: ["Шинэ байр", "10, 11, 12-р давхарт сонголттой", "Цонх хотхон руугаа харсан"],
+    description: "Гранд гарден хотхоны 7-р блокийн 10, 11, 12-р давхруудад шинэ 75м² 3 өрөө байрнууд зарагдана. Цонх нь хотхон руугаа харсан.\n\nҮнэ: 1м² нь 3.8 сая₮.\n\nЗураг: Гранд гарден хотхоны хашаа.",
+    photos: ["zurag/grand-garden-7/1.jpg"] },
+  { id: 28, deal: "Худалдах", type: "Орон сууц", district: "Эрдэнэт", area_name: "5-р микр, 12-р байр",
+    title: "5-р микрт 4-р давхрын 2 өрөө байр", price: 175000000, rooms: 2, size: null, floor: "4-р давхар", year: null,
+    price_note: "Үнэ тохиролцоно",
+    payment: "", features: ["Цонх урагшаа, хойшоо", "Тагттай гал тогоо", "Шинэ гал тогооны тавилга"],
+    description: "5-р микрийн 12-р байрны 4-р давхарт 2 өрөө байр. Цонх нь урагшаа болон хойшоо харсан.\n\nҮнэ: 175 сая₮, тохиролцоно.",
+    photos: [1,2,3,4,5,6,7,8].map(n => "zurag/5mikr-12/" + n + ".jpg") },
+  { id: 27, deal: "Худалдах", type: "Орон сууц", district: "Эрдэнэт", area_name: "Sky Tower",
+    title: "Sky Tower-т 92.95м² мастертай 3 өрөө, суурилуулсан тавилгатай", price: null, price_m2: 4000000, rooms: 3, size: 92.95, floor: "5-р давхар", year: null,
+    price_note: "Үнэ тохиролцоно",
+    payment: "", features: ["Мастер өрөөтэй", "Суурилуулсан модон тавилга бүгд үлдэнэ", "Цонх хойшоо", "Гал тогоо зочны өрөөтэй нээлттэй", "2 угаалгын өрөө (ванн, шүршүүр)"],
+    description: "Sky Tower-ийн 5-р давхарт 92.95м² мастертай 3 өрөө байр. Цонх хойшоо харсан. Суурилуулсан модон тавилгууд бүгд үлдэнэ.\n\nҮнэ: 1м² нь 4 сая₮, тохиролцоно.",
+    photos: Array.from({length: 11}, (_, i) => "zurag/sky-tower/" + (i + 1) + ".jpg") },
+  { id: 26, deal: "Худалдах", type: "Барилга, талбай", district: "Эрдэнэт", area_name: "Хорооллын эцсийн төв зам дагуу",
+    title: "Төв зам дагуух 2 давхар объект 204м², 184м² газартай", price: 430000000, rooms: 0, size: 204, floor: "2 давхар", year: null,
+    price_note: "Үнэ тохиролцоно",
+    payment: "Бартерт орон сууц авч болно", features: ["Төв замын дагуу", "Төвийн дулаанд холбогдсон", "Газар 184м²", "Баар, караокены зөвшөөрөл 2029 он хүртэл", "Цайны газар, баар, караоке, хүнсний дэлгүүрт тохиромжтой", "Бартер боломжтой"],
+    description: "Хорооллын эцсийн төв зам дагуу байрлах 2 давхар объект худалдана. Объект 204м², газар 184м². Төвийн дулаанд холбогдсон.\n\nЦайны газар, баар, караоке, хүнсний дэлгүүр зэрэг үйл ажиллагаа явуулах боломжтой. Баар, караокены зөвшөөрөл 2029 онд дуусна.\n\nҮнэ: 430 сая₮, тохиролцоно.\nБартерт орон сууц оролцуулах боломжтой.",
+    photos: [1,2,3].map(n => "zurag/bar-karaoke/" + n + ".jpg") },
+  { id: 25, deal: "Худалдах", type: "Орон сууц", district: "Эрдэнэт", area_name: "2а хороолол, Евро Ресидэнс",
+    title: "Яаралтай: Евро Ресидэнст 80м² 3 өрөө, тавилгатай", price: null, price_m2: 4000000, rooms: 3, size: 80, floor: "1/9 давхар", year: null,
+    price_note: "Яаралтай · Үнэ тохиролцоно",
+    payment: "", features: ["Яаралтай зарна", "Цонх урагшаа", "Тавилга үлдэнэ", "Шинэ засвартай", "Ванн", "Хүүхдийн тоглоомын талбайтай"],
+    description: "2а хороолол, Евро Ресидэнс байрны 1-р давхарт (9 давхар байр) 80м² 3 өрөө байр. Цонх урагшаа харсан. Тавилгууд үлдэнэ. Эзэн яаралтай зарж байна.\n\nҮнэ: 1м² нь 4 сая₮, тохиролцоно.",
+    photos: Array.from({length: 13}, (_, i) => "zurag/euro-residence/" + (i + 1) + ".jpg") },
+  { id: 24, deal: "Худалдах", type: "Орон сууц", district: "Эрдэнэт", area_name: "Оюу апартмент (Сансар худалдааны төвийн ард)",
+    title: "Оюу апартментэд 55.28м² 2 өрөө, гал тогооны тавилгатай", price: null, price_m2: 3600000, rooms: 2, size: 55.28, floor: "6/9 давхар", year: null,
+    price_note: "Үнэ тохиролцоно",
+    payment: "", features: ["Цонх хойшоо, нэг жижиг цонх зүүн тийшээ", "Гал тогооны тавилга үлдэнэ", "Ашиглалтад ороод 3 жил", "Лифттэй", "Том цонхтой гэрэлтэй зочны өрөө"],
+    description: "Сансар худалдааны төвийн ард байрлах Оюу апартментийн 6-р давхарт (9 давхар байр) 55.28м² 2 өрөө байр. Цонх нь хойшоо, нэг жижиг цонх зүүн тийшээ харсан. Гал тогооны тавилга үлдэнэ. Барилга ашиглалтад ороод 3 жил болж байна.\n\nҮнэ: 1м² нь 3.6 сая₮, тохиролцоно.",
+    photos: Array.from({length: 14}, (_, i) => "zurag/oyu-apartment/" + (i + 1) + ".jpg") },
+  { id: 23, deal: "Худалдах", type: "Орон сууц", district: "Эрдэнэт", area_name: "Гранд гарден, 6-р байр",
+    title: "Гранд гарденд 56м² 2 өрөө, гал тогооны тавилгатай", price: null, price_m2: 3900000, rooms: 2, size: 56, floor: "2-р давхар", year: null,
+    price_note: "Үнэ тохиролцоно",
+    payment: "", features: ["Цонх баруун тийшээ", "Гал тогооны тавилга үлдэнэ", "Хүүхдийн тоглоомын талбайтай хотхон"],
+    description: "Гранд гарден хотхоны 6-р байрны 2-р давхарт 56м² 2 өрөө байр. Цонх нь баруун тийшээ харсан. Гал тогооны тавилга үлдэнэ.\n\nҮнэ: 1м² нь 3.9 сая₮, тохиролцоно.",
+    photos: Array.from({length: 11}, (_, i) => "zurag/grand-garden-6/" + (i + 1) + ".jpg") },
+  { id: 22, deal: "Худалдах", type: "Хаус", district: "Эрдэнэт", area_name: "Ёс заншлын өргөөний зүүн урд",
+    title: "Цэвэр модон 4 улирлын Канад хаус, 120м², 750м² газартай", price: 240000000, rooms: 0, size: 120, floor: "", year: null,
+    price_note: "Үнэ тохиролцоно",
+    payment: "Бартер: байр, машин сонирхоно", features: ["Цэвэр модон Канад хаус", "4 улирлын", "Газар 750м²", "Цахилгаан халаалт (шалны болон радиатор)", "00, банн дотроо", "1 машины дулаалгатай гараж", "Шууд орж амьдрахад бэлэн", "Агаар сайтай байршил", "Бартер боломжтой"],
+    description: "Ёс заншлын өргөөний зүүн урд байрлах цэвэр модон, 4 улирлын Канад хаус худалдана. Байшин 120м², газар 750м².\n\nХалаалтыг цахилгаанаар (шалны халаалт болон радиатор) шийдсэн. 00, банн дотроо. 1 машины дулаалгатай гараштай. Шууд нүүгээд ороход бэлэн, агаар сайтай газар.\n\nҮнэ: 240 сая₮, тохиролцоно.\nБайр эсвэл машинаар бартер хийх боломжтой.",
+    photos: [1,2,3,4,5,6,7,8,9,10].map(n => "zurag/kanad-haus/" + n + ".jpg") },
+  { id: 21, deal: "Худалдах", type: "Орон сууц", district: "Эрдэнэт", area_name: "Buddha Villa (Будда Вилла)",
+    title: "Buddha Villa: 13 сонголт, 69–169м², пентхаус, дуплекс", price: null, price_m2: 6000000, rooms: 0, size: null, floor: "", year: null,
+    price_note: "1м² нь 6 сая₮ · Б блок 3-р давхрын 3 өрөө 5.5 сая₮, бартертай · Үнэ тохиролцоно",
+    payment: "", features: ["Шинэ барилга", "А болон Б блок", "Пентхаус (805, 806)", "Дуплекс (801)", "110м² үйлчилгээний талбай", "Буддагийн цогцолборын ойролцоо", "Хүүхдийн тоглоомын талбай", "Зогсоолтой", "Бартер боломжтой (Б блок, 3-р давхрын 3 өрөө)"],
+    description: "Buddha Villa хотхонд А болон Б блокийн 12 айл, нэг үйлчилгээний талбай зарагдана. 69м²-ээс 169м² хүртэлх сонголттой, дээд давхарт пентхаус болон дуплекс байр бий.\n\nҮнэ: 1м² нь 6 сая₮, тохиролцоно.\nБ блокийн 3-р давхрын 81.87м² 3 өрөө: 1м² нь 5.5 сая₮, сайн ярина, бартер сонсоно.\n«Зарагдах айлууд» хүснэгтээс тоот, давхар, талбайг харна уу.",
+    units: [
+      { name: "Б блок", rows: [
+        { no: "202", floor: "2", size: 81.87 }, { no: "206", floor: "2", size: 87.05 }, { no: "3 өрөө", floor: "3", size: 81.87, kind: "5.5 сая₮/м² · Бартер" }, { no: "402", floor: "4", size: 81.87 },
+        { no: "503", floor: "5", size: 69.32 }, { no: "801", floor: "8", size: 118, kind: "Дуплекс" },
+        { no: "805", floor: "8", size: 147.76, kind: "Пентхаус" }, { no: "806", floor: "8", size: 168.80, kind: "Пентхаус" },
+        { no: "Талбай", floor: "", size: 110, kind: "Үйлчилгээ" } ] },
+      { name: "А блок", rows: [
+        { no: "201", floor: "2", size: 85.22 }, { no: "404", floor: "4", size: 74.47 },
+        { no: "604", floor: "6", size: 74.47 }, { no: "901", floor: "9", size: 85.22 } ] } ],
+    photos: [1,2].map(n => "zurag/buddha-villa/" + n + ".jpg") },
+  { id: 20, deal: "Худалдах", type: "Газар", district: "Эрдэнэт", area_name: "Булган гарах зам, «МТ» колонкийн хажууд",
+    title: "Булган гарах замын дагуу 2 айлын газар (700м² × 2)", price: 120000000, rooms: 0, size: 1400, floor: "", year: null,
+    price_note: "Үнэ буурсан: 1 айлын газар 70 сая₮ → 60 сая₮ (2 газар нийт 120 сая₮)",
+    payment: "Бартер боломжтой", features: ["2 тусдаа газар, тус бүр 700м²", "Эзэмших гэрчилгээтэй (2039 он хүртэл)", "Бүх төрлийн үйл ажиллагаа явуулах боломжтой", "Төв замын дагуу", "Бартер боломжтой"],
+    description: "Булган гарах замын дагуу, «МТ» (Магнай трэйд) колонкийн хажууд 2 айлын хоосон газар худалдана. Газар тус бүр 700м², хоёулаа эзэмших гэрчилгээтэй, эзэмших хугацаа 2039 он хүртэл. Ямар ч үйл ажиллагаа явуулах боломжтой.\n\nҮнэ буурсан: 1 айлын газар 70 саяас 60 сая₮ болсон, 2 газрыг хамт нь 120 сая₮.\nБартер оролцуулах боломжтой.",
+    photos: [1,2].map(n => "zurag/bulgan-gazar/" + n + ".jpg") },
+  { id: 19, deal: "Худалдах", type: "Орон сууц", district: "Эрдэнэт", area_name: "Оргил Luxury Tower",
+    title: "Оргил Luxury Tower-т 37.50м² 2 өрөө, цонх урагшаа", price: null, price_m2: 5000000, rooms: 2, size: 37.5, floor: "4-р давхар", year: null,
+    payment: "", features: ["Цонх урагшаа", "Шинэ барилга", "Гал тогоо зочны өрөөтэй нийлсэн"],
+    description: "Оргил Luxury Tower-ийн 4-р давхарт 37.50м² 2 өрөө байр. Цонх нь урагшаа харсан.\n\nҮнэ: 1м² нь 5 сая₮.",
+    photos: [1,2].map(n => "zurag/orgil-37/" + n + ".jpg") },
+  { id: 18, deal: "Худалдах", type: "Орон сууц", district: "Эрдэнэт", area_name: "5-р микр, 11-р байр",
+    title: "5-р микрт 1-р давхрын 3 өрөө байр", price: 210000000, rooms: 3, size: null, floor: "1-р давхар", year: null,
+    price_note: "Үнэ тохиролцоно",
+    payment: "15 сая хүртэлх машин бартерт авч болно", features: ["Цонх урагшаа, хойшоо", "Засвар хийгээгүй", "Машин бартер (15 сая хүртэл)"],
+    description: "5-р микрийн 11-р байрны 1-р давхарт 3 өрөө байр. Цонх нь урагшаа болон хойшоо харсан. Засвар хийгээгүй тул өөрийн хүссэнээр засаж болно.\n\nҮнэ: 210 сая₮, тохиролцоно.\n15 сая₮ хүртэлх үнэтэй машиныг бартерт авч болно.",
+    photos: Array.from({length: 16}, (_, i) => "zurag/5mikr-11/" + (i + 1) + ".jpg") },
+  { id: 17, deal: "Худалдах", type: "Барилга, талбай", district: "Эрдэнэт", area_name: "Их хаад хотхон (цуваа)",
+    title: "Их хаадын цуваанд 110м² эмийн сан зарна", price: null, price_m2: 8000000, rooms: 0, size: 110, floor: "1-р давхар", year: null,
+    price_note: "Тусгай зөвшөөрөл, компанигүйгээр 1м² нь 7.8 сая₮",
+    payment: "Бартер: 1-2 өрөө байр сонирхоно", features: ["Тусгай зөвшөөрөл, компанитай нь", "2 орц гарцтай", "Гал тогоо", "Хувцас солих өрөө", "Оффисын өрөө", "Бартер боломжтой"],
+    description: "Их хаад хотхоны цуваанд байрлах 110м² ажиллаж байгаа эмийн сан зарна. 2 орц гарцтай. Дотроо гал тогоо, хувцас солих өрөө, оффисын өрөөтэй.\n\nҮнэ: тусгай зөвшөөрөл, компанитай нь 1м² нь 8 сая₮.\nТусгай зөвшөөрөл, компанигүйгээр 1м² нь 7.8 сая₮.\n\n1-2 өрөө байраар бартер хийх боломжтой.",
+    photos: [1,2].map(n => "zurag/ih-haad-emiin-san/" + n + ".jpg") },
+  { id: 16, deal: "Түрээслэх", type: "Орон сууц", district: "Эрдэнэт", area_name: "6-р микр, 14-р байр (6-17-ийн арын байр)",
+    title: "6-р микрт 69м² 2 өрөө, бүх тавилгатай түрээслүүлнэ", price: 1300000, rooms: 2, size: 69, floor: "6/6 давхар", year: null,
+    price_note: "1+1 барьцаатай (1 сарын төлбөр + 1 сарын барьцаа)",
+    payment: "Сар бүр, 1+1 барьцаатай", features: ["Бүх тавилгатай", "Смарт цоожтой", "Хөргөгч, пийшин, зурагт", "Угаалгын машин", "Ор, жижиг буйдан", "Гал тогооны ширээ сандал"],
+    description: "6-р микрийн 14-р байр (6-17-ийн арын байр), 6/6 давхарт 69м² 2 өрөө байр бүх тавилгатайгаа түрээслүүлнэ. Смарт цоожтой.\n\nДагалдах зүйлс: гал тогоо, хөргөгч, пийшин, зурагт, ор, угаалгын машин, гал тогооны ширээ сандал, жижиг буйдан.\n\nҮнэ: сард 1.3 сая₮. Төлбөрийг 1+1 барьцаатай авна.\n\nСар бүр төлбөрөө хугацаандаа хийдэг, урт хугацаагаар (доод тал нь 1 жил) байх түрээслэгч хайж байна. Бага насны хүүхэдгүй бол илүү тохиромжтой.",
+    photos: [1,2,3,4,5,6,7,8,9].map(n => "zurag/6mikr-14-turees/" + n + ".jpg") },
+  { id: 15, deal: "Худалдах", type: "Орон сууц", district: "Эрдэнэт", area_name: "Их хаад хотхон, 9-р байр",
+    title: "Их хаадад 61.33м² 2 өрөө, суурилуулсан тавилгатай", price: null, price_m2: 4200000, rooms: 2, size: 61.33, floor: "6-р давхар", year: null,
+    price_note: "Үнэ тохиролцоно",
+    payment: "", features: ["Суурилуулсан тавилга үлдэнэ", "Гал тогооны арал", "Хувцасны том шүүгээ", "Шилэн тагт", "Ванн"],
+    description: "Их хаад хотхоны 9-р байрны 6-р давхарт 61.33м² 2 өрөө байр. Суурилуулсан тавилгууд (гал тогоо, хувцасны шүүгээ) үлдэнэ. Гал тогоо зочны өрөөтэй нээлттэй холбогдсон, шилэн тагттай.\n\nҮнэ: 1м² нь 4.2 сая₮.",
+    photos: [1,2,3,4,5,6,7,8,9].map(n => "zurag/ih-haad-9/" + n + ".jpg") },
+  { id: 14, deal: "Худалдах", type: "Орон сууц", district: "Эрдэнэт", area_name: "Сувд хотхон, 3-р байр",
+    title: "Сувд хотхонд 33.9м² 2 өрөө, урагшаа харсан", price: null, price_m2: 3900000, rooms: 2, size: 33.9, floor: "1-р давхар", year: null,
+    price_note: "",
+    payment: "", features: ["Урагшаа харсан", "Нар сайн тусдаг", "Шилэн тагттай барилга"],
+    description: "Сувд хотхоны 3-р байрны 1-р давхарт 33.9м² 2 өрөө байр. Цонх урагшаа харсан.\n\nҮнэ: 1м² нь 3.9 сая₮.",
+    photos: ["zurag/suvd-3/1.jpg"] },
+  { id: 13, deal: "Худалдах", type: "Орон сууц", district: "Эрдэнэт", area_name: "Оргил Luxury Tower",
+    title: "Оргил Luxury Tower-т 50.77м² 2 өрөө, 7-р давхар", price: null, price_m2: 5000000, rooms: 2, size: 50.77, floor: "7-р давхар", year: null,
+    price_note: "",
+    payment: "", features: ["Тагттай", "Гал тогоо зочны өрөөтэй нийлсэн", "Шинэ барилга"],
+    description: "Оргил Luxury Tower-ийн «С» загварын 2 өрөө байр, 7-р давхарт.\n\nЗочны өрөө ба гал тогоо 31.73м², унтлагын өрөө 12.51м², угаалгын өрөө 4.78м², тагт 1.75м².\n\nҮнэ: 1м² нь 5 сая₮.",
+    photos: ["zurag/orgil-50/1.jpg","zurag/orgil-50/2.jpg"] },
+  { id: 12, deal: "Худалдах", type: "Орон сууц", district: "Эрдэнэт", area_name: "Найрамдал хотхон",
+    title: "Найрамдал хотхонд 79.37м² мастертай 3 өрөө, 6-р давхар", price: null, price_m2: 5500000, rooms: 3, size: 79.37, floor: "6-р давхар", year: null,
+    price_note: "30% урьдчилгаатай үнэ · 100% бэлнээр 1м² нь 5.3 сая₮",
+    payment: "30% урьдчилгаа, эсвэл 100% бэлэн", features: ["Мастер унтлагын өрөө", "2 ариун цэврийн өрөө", "Цонх урд, хойд тийшээ", "Тагттай", "Шинэ барилга"],
+    description: "Найрамдал хотхонд 6-р давхарт 79.37м² мастертай 3 өрөө байр шинээр орж ирлээ. Цонх урагшаа болон хойшоо харсан.\n\nӨрөөнүүд: хөлийн өрөө, хонгил 9.55м², зочны өрөө ба гал тогоо 27.14м², унтлагын өрөө 13.50м², мастер унтлагын өрөө 19.31м², ариун цэврийн 2 өрөө 4.23м² ба 5.64м², тагт 4.92м².\n\nҮнэ: 30% урьдчилгаатай бол 1м² нь 5.5 сая₮. 100% бэлнээр бол 1м² нь 5.3 сая₮.",
+    photos: ["zurag/nairamdal/1.jpg","zurag/nairamdal/2.jpg"] },
+  { id: 11, deal: "Худалдах", type: "Орон сууц", district: "Эрдэнэт", area_name: "Гранд гарден, 5-р байр",
+    title: "Гранд гарденд 55м² 2 өрөө, гал тогооны тавилгатай", price: null, price_m2: 3900000, rooms: 2, size: 55, floor: "1-р давхар", year: null,
+    price_note: "",
+    payment: "", features: ["Гал тогооны тавилга дагалдана", "Үүдний шкаф дагалдана", "Ванн", "Тагттай", "Шинэ засвар", "Тоглоомын талбай руу харсан"],
+    description: "Гранд гарден хотхоны 5-р байрны 1-р давхарт 55м² 2 өрөө байр. Гал тогооны тавилга, үүдний шкаф дагалдана. Гал тогоо зочны өрөөтэй нээлттэй холбогдсон.\n\nҮнэ: 1м² нь 3.9 сая₮.",
+    photos: [1,2,3,4,5,6,7].map(n => "zurag/grand-garden/" + n + ".jpg") },
+  { id: 10, deal: "Худалдах", type: "Орон сууц", district: "Эрдэнэт", area_name: "E Tower апартмент",
+    title: "E Tower-т 49.17м² 2 өрөө, 6-р давхар, хямд үнэтэй", price: 180000000, rooms: 2, size: 49.17, floor: "6-р давхар", year: null,
+    price_note: "Хямд үнэтэй байр",
+    payment: "", features: ["Хямд үнэтэй", "Шинэ барилга, шинэ засвар", "Цонх баруун тийшээ", "Ванн", "Тагттай", "26-р цэцэрлэг хажууд"],
+    description: "E Tower апартментын 6-р давхарт 49.17м² 2 өрөө байр шинээр орж ирлээ. Цонх баруун тийшээ харсан. Засвар шинэ, угаалгын өрөө ваннтай.\n\nОйролцоо: 26-р цэцэрлэг, Залуучуудын ордон, Эрдэнэт цэцэрлэгт хүрээлэн.",
+    photos: [1,2,3,4,5,6,7,8,9,10].map(n => "zurag/etower/" + n + ".jpg") },
+  { id: 9, deal: "Худалдах", type: "Орон сууц", district: "Эрдэнэт", area_name: "4-р микр, 9-р байр",
+    title: "4-р микрт булангийн 1 өрөө байр, гадагшаа тусдаа хаалгатай", price: 126000000, rooms: 1, size: null, floor: "1-р давхар", year: null,
+    price_note: "Үнэ буурсан: 130 сая₮ → 126 сая₮",
+    payment: "", features: ["Гадагшаа тусдаа хаалга, шат", "Булангийн байр", "Тагттай", "Үйлчилгээний зориулалтад тохиромжтой"],
+    description: "4-р микрийн 9-р байрны 1-р давхарт булангийн 1 өрөө байр. Гадагшаа тусдаа хаалга, шат гаргасан тул оффис, үйлчилгээний газар болгоход тохиромжтой.\n\nҮнэ 130 саяас 126 сая₮ болж буурсан.",
+    photos: ["zurag/4mikr-9/1.jpg","zurag/4mikr-9/2.jpg","zurag/4mikr-9/3.jpg","zurag/4mikr-9/4.jpg","zurag/4mikr-9/5.jpg","zurag/4mikr-9/6.jpg"] },
+  { id: 8, deal: "Худалдах", type: "Орон сууц", district: "Эрдэнэт", area_name: "4-р микр, 7-р байр",
+    title: "4-р микрт 3 өрөө байр, 2 тагттай, 3 тал руу цонхтой", price: 220000000, rooms: 3, size: 38, floor: "4/4", year: null,
+    price_note: "Үнэ тохиролцоно",
+    payment: "", features: ["2 тагттай", "Цонх урд, хойд, баруун тийшээ", "Гал тогоо том өрөөнд нэгдсэн", "Засвартай", "Цэцэрлэг ойрхон"],
+    description: "4-р микрийн 7-р байрны 4 давхарын 4-р давхарт 3 өрөө байр. Гал тогоог том өрөөтэй нийлүүлсэн. Цонх урагшаа, хойшоо, баруун тийшээ харсан, 2 тагттай. Цонхноос цэцэрлэг, хүүхдийн тоглоомын талбай харагдана.",
+    photos: ["zurag/4mikr-7/1.jpg","zurag/4mikr-7/2.jpg","zurag/4mikr-7/3.jpg","zurag/4mikr-7/4.jpg","zurag/4mikr-7/5.jpg","zurag/4mikr-7/6.jpg","zurag/4mikr-7/7.jpg"] },
+  { id: 7, deal: "Худалдах", type: "Орон сууц", district: "Эрдэнэт", area_name: "Оргил апартмент",
+    title: "Оргил апартментад 57.80м² 3 өрөө, 7-р давхар", price: null, price_m2: 3800000, rooms: 3, size: 57.80, floor: "7-р давхар", year: null,
+    price_note: "50 сая₮ урьдчилгаатай хувь лизинг хийж болно",
+    payment: "Бэлэн, хувь лизинг", features: ["Хувь лизинг боломжтой", "2 өрөөг 3 өрөө болгосон", "Шилэн тагт", "Цонх хойд, зүүн тийшээ", "Шинэ барилга"],
+    description: "Оргил апартментын 7-р давхарт 57.80м² байр. Анх 2 өрөө байсныг 3 өрөө болгосон. Цонх хойшоо болон зүүн тийшээ харсан, шилэн тагттай.\n\nҮнэ: 1м² нь 3.8 сая₮. 50 сая₮ төлөөд үлдсэнийг хувь лизингээр төлж болно.",
+    photos: ["zurag/orgil-apt/1.jpg","zurag/orgil-apt/2.jpg","zurag/orgil-apt/3.jpg","zurag/orgil-apt/4.jpg","zurag/orgil-apt/5.jpg","zurag/orgil-apt/6.jpg","zurag/orgil-apt/7.jpg"] },
+  { id: 6, deal: "Худалдах", type: "Орон сууц", district: "Эрдэнэт", area_name: "6-р микр, 13-р байр",
+    title: "6-р микрт арктай 1 өрөө байр, бүх цонх урагшаа", price: 132000000, rooms: 1, size: null, floor: "5/5", year: null,
+    price_note: "Үнэ тохиролцоно",
+    payment: "", features: ["Бүх цонх урагшаа", "Арктай", "Тусдаа гал тогоо", "Хүүхдийн тоглоомын талбай руу харсан"],
+    description: "6-р микрийн 13-р байрны 5 давхарын 5-р давхарт арктай 1 өрөө байр. Бүх цонх урагшаа харсан тул нар сайн тусна. Цонхноос хүүхдийн тоглоомын талбай харагдана.",
+    photos: ["zurag/6mikr-13/1.jpg","zurag/6mikr-13/2.jpg","zurag/6mikr-13/3.jpg","zurag/6mikr-13/4.jpg","zurag/6mikr-13/5.jpg","zurag/6mikr-13/6.jpg"] },
+  { id: 5, deal: "Худалдах", type: "Орон сууц", district: "Эрдэнэт", area_name: "Оргил Luxury Tower",
+    title: "Оргил Luxury Tower-т 75.51м² 3 өрөө, 11-р давхар", price: null, price_m2: 5000000, rooms: 3, size: 75.51, floor: "11/12", year: null,
+    price_note: "Бартер оролцуулж болно · 100% бэлнээр 1м² нь 4.8 сая₮",
+    payment: "Бэлэн, бартер", features: ["Бартер оролцуулж болно", "Өндөр давхар, харагдац сайтай", "Ванн", "Тагт", "Шинэ барилга"],
+    description: "Оргил Luxury Tower-ийн «А» загварын 3 өрөө байр, 12 давхарын 11-р давхарт.\n\nЗочны өрөө, гал тогоо 44.48м², унтлагын 2 өрөө 13.87м² ба 11.25м², угаалгын өрөө 4.46м², тагт 1.45м².\n\nҮнэ: 1м² нь 5 сая₮ (бартер оролцуулж болно). 100% бэлнээр төлбөл 1м² нь 4.8 сая₮.",
+    photos: ["zurag/orgil-75/1.jpg","zurag/orgil-75/2.jpg","zurag/orgil-75/3.jpg","zurag/orgil-75/4.jpg","zurag/orgil-75/5.jpg","zurag/orgil-75/6.jpg"] },
+  { id: 4, deal: "Худалдах", type: "Гараж, зогсоол", district: "Эрдэнэт", area_name: "Оргил Luxury Tower",
+    title: "Оргил Luxury Tower-т дулаан гараж зарна, 2 ширхэг", price: 45000000, rooms: 0, size: null, floor: "", year: null,
+    price_note: "Нэг гаражийн үнэ · Үнэ тохиролцоно",
+    payment: "", features: ["2 гараж байгаа", "Барилгын доор", "Шинэ барилга"],
+    description: "Оргил Luxury Tower-т 2 гараж худалдаанд шинээр орж ирлээ. Нэг гаражийн үнэ 45 сая₮, үнэ тохиролцоно. Хоёуланг нь авах боломжтой.",
+    photos: ["zurag/orgil/1.jpg"] },
+  { id: 3, deal: "Түрээслэх", type: "Барилга, талбай", district: "Эрдэнэт", area_name: "1-р микр",
+    title: "Хуучин Гэгээн билиг сургуулийн барилга түрээслүүлнэ", price: null, price_m2: 30000, rooms: 0, size: 150, floor: "3 давхар + B1", year: null,
+    price_note: "B1 давхар 1м² нь 20 000₮ / сар",
+    payment: "Сар бүр", features: ["Давхар тус бүрээр түрээслэнэ", "Газар доорх B1 давхар", "Тусдаа орц", "Хашаатай", "Сургалт, оффис, үйлчилгээнд тохиромжтой"],
+    description: "1-р микрт байрлах хуучин Гэгээн билиг сургуулийн барилга. Газрын дээш 3 давхар, давхар тус бүрийг тусад нь түрээслэж болно.\n\nҮнэ: 1м² нь сард 30 000₮.\nB1 (газар доорх) давхар: 1м² нь сард 20 000₮.",
+    photos: ["zurag/gegeenbilig/1.jpg"] },
+  { id: 2, deal: "Худалдах", type: "Орон сууц", district: "Эрдэнэт", area_name: "Сувд хотхон",
+    title: "Сувд хотхонд 2 өрөө байр, бүх цонх урагшаа", price: 165000000, rooms: 2, size: 41.31, floor: "3-р давхар", year: null,
+    payment: "", features: ["Бүх цонх урагшаа", "Нар сайн тусдаг", "Гал тогооны арал", "Хувцасны шүүгээ", "Засвартай"],
+    description: "Сувд хотхонд 41.31м² талбайтай 2 өрөө байр, 3-р давхарт. Бүх цонх урагшаа харсан тул өдөржин нар тусна. Гал тогоо тусдаа арал ширээтэй, унтлагын өрөөнд суурилуулсан шүүгээтэй.",
+    photos: ["zurag/suvd/1.jpg","zurag/suvd/2.jpg","zurag/suvd/3.jpg","zurag/suvd/4.jpg","zurag/suvd/5.jpg","zurag/suvd/6.jpg","zurag/suvd/7.jpg"] },
+  { id: 1, deal: "Худалдах", type: "Орон сууц", district: "Эрдэнэт", area_name: "Central хотхон",
+    title: "Central хотхонд мастер өрөөтэй 3 өрөө байр", price: null, price_m2: 4900000, rooms: 3, size: 71.41, floor: "", year: null,
+    payment: "", features: ["Мастер унтлагын өрөө", "2 угаалгын өрөө", "Ванн", "Шүршүүр", "Шинэ засвартай", "Том цонх"],
+    description: "Central хотхонд 71.41м² талбайтай 3 өрөө байр. Мастер унтлагын өрөө өөрийн ванн бүхий угаалгын өрөөтэй, нийтийн угаалгын өрөө нь шүршүүртэй. Засвар шинэ, цонх том, гэрэлтэй. Үнэ: 1м² нь 4.9 сая₮.",
+    photos: ["zurag/central/1.jpg","zurag/central/2.jpg","zurag/central/3.jpg","zurag/central/4.jpg","zurag/central/5.jpg","zurag/central/6.jpg","zurag/central/7.jpg","zurag/central/8.jpg","zurag/central/9.jpg"] }
+];
+
+/* ===================================================================== */
+
+const DISTRICTS = [...new Set(LISTINGS.map(l => l.district))];   // байршлууд заруудаас автоматаар гарна
+const TYPES = [...new Set(LISTINGS.map(l => l.type))];
+const SALE_PRICES = [[0,150e6,"150 сая хүртэл"],[150e6,300e6,"150–300 сая"],[300e6,500e6,"300–500 сая"],[500e6,Infinity,"500 саяас дээш"]];
+const RENT_PRICES = [[0,1.5e6,"1.5 сая хүртэл"],[1.5e6,3e6,"1.5–3 сая"],[3e6,Infinity,"3 саяас дээш"]];
+
+const state = { deal: "Бүгд", type: "", district: "", price: "", rooms: 0, sort: "new" };
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const money = n => n.toLocaleString("en-US").replace(/,/g, " ") + "₮";
+function short(n){
+  if (n >= 1e9) return (n/1e9).toFixed(n%1e9?2:0).replace(/\.?0+$/,"") + " тэрбум₮";
+  if (n >= 1e6) return (n/1e6).toFixed(1).replace(/\.0$/,"") + " сая₮";
+  return money(n);
+}
+const rentSfx = l => l.deal === "Түрээслэх" ? " / сар" : "";
+const priceLabel = l => l.price_m2 ? short(l.price_m2) + `<small> / м²${rentSfx(l)}</small>` : short(l.price) + (rentSfx(l) ? `<small>${rentSfx(l)}</small>` : "");
+const sortPrice = l => l.price ?? (l.price_m2 * (l.size || 1));   // зөвхөн эрэмбэ, шүүлтүүрт ашиглана
+const sizeUnit = l => l.type === "Газар" ? "м² газар" : "м²";
+
+/* ---------- placeholder photos (shown until real photos are added) ---------- */
+function samplePhoto(l, i){
+  const h = (l.id * 47 + i * 23) % 360;
+  const sky1 = `hsl(${(210 + l.id*7)%360} 70% ${78 - i*4}%)`, sky2 = `hsl(${(200 + l.id*5)%360} 60% 92%)`;
+  const wall = `hsl(${h} 25% ${70 - (i%2)*8}%)`, dark = `hsl(${h} 30% 35%)`, win = `hsl(205 70% 82%)`;
+  let body = "";
+  if (i % 3 === 1) { // interior
+    body = `<rect width="400" height="300" fill="hsl(${h} 20% 94%)"/><rect y="215" width="400" height="85" fill="hsl(30 35% ${62 - l.id%3*5}%)"/>
+      <rect x="230" y="50" width="130" height="130" fill="${win}" stroke="#fff" stroke-width="8"/><line x1="295" y1="50" x2="295" y2="180" stroke="#fff" stroke-width="6"/>
+      <rect x="40" y="160" width="150" height="60" rx="10" fill="${dark}"/><rect x="40" y="140" width="150" height="30" rx="10" fill="hsl(${h} 30% 45%)"/>
+      <rect x="250" y="225" width="90" height="10" rx="5" fill="hsl(30 20% 40%)"/>`;
+  } else if (l.type === "Газар") {
+    body = `<rect width="400" height="300" fill="${sky1}"/><path d="M0 170 Q100 120 200 160 T400 150 V300 H0Z" fill="hsl(95 30% 55%)"/>
+      <path d="M0 210 Q150 190 400 215 V300 H0Z" fill="hsl(90 35% 45%)"/>${[60,130,200,270,340].map(x=>`<rect x="${x}" y="200" width="5" height="40" fill="#6b5a40"/>`).join("")}
+      <line x1="40" y1="210" x2="360" y2="210" stroke="#6b5a40" stroke-width="3"/>`;
+  } else if (l.type === "Хаус" || l.type === "Хашаа байшин") {
+    body = `<rect width="400" height="300" fill="${sky1}"/><rect y="230" width="400" height="70" fill="hsl(95 28% 52%)"/>
+      <rect x="110" y="130" width="180" height="105" fill="${wall}"/><path d="M95 135 L200 70 L305 135Z" fill="${dark}"/>
+      <rect x="130" y="155" width="40" height="35" fill="${win}"/><rect x="230" y="155" width="40" height="35" fill="${win}"/><rect x="185" y="180" width="30" height="55" fill="${dark}"/>
+      ${l.type==="Хаус"?`<rect x="130" y="100" width="0" height="0"/>`:""}<rect x="0" y="235" width="400" height="6" fill="#8a7454"/>`;
+  } else { // apartment / office tower
+    const floors = 7 + l.id % 5;
+    let wins = "";
+    for (let f=0; f<floors; f++) for (let c=0; c<5; c++) wins += `<rect x="${128+c*30}" y="${255 - (f+1)*24}" width="18" height="14" fill="${(f+c+l.id)%4? win : "hsl(45 90% 75%)"}"/>`;
+    body = `<rect width="400" height="300" fill="${sky1}"/><rect x="20" y="${150 - l.id%3*20}" width="80" height="200" fill="hsl(${h} 15% 78%)"/>
+      <rect x="310" y="${120 + l.id%2*30}" width="70" height="200" fill="hsl(${h} 15% 74%)"/>
+      <rect x="115" y="${255 - floors*24 - 12}" width="170" height="${floors*24+20}" fill="${wall}"/>${wins}
+      <rect y="262" width="400" height="38" fill="hsl(${h} 10% 55%)"/>`;
+  }
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${sky1}"/><stop offset="1" stop-color="${sky2}"/></linearGradient></defs><rect width="400" height="300" fill="url(#g)"/>${body.replace(/fill="hsl\(\d+ 70% \d+%\)"/, 'fill="url(#g)"')}</svg>`;
+  return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+}
+const photosOf = l => (l.photos && l.photos.length) ? l.photos : [0,1,2,3].map(i => samplePhoto(l, i));
+
+/* ---------- icons ---------- */
+const ICON = {
+  pin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>',
+  phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>',
+  viber: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6 2 3 4.5 3 10.5c0 3.5 1 5.6 3 6.8V21l3-2.3c1 .2 2 .3 3 .3 6 0 9-2.5 9-8.5S18 2 12 2z"/><path d="M9 8.5c.5 2.5 2 4 4.5 4.8"/></svg>',
+  fb: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-2.8 0-4.5 1.8-4.5 4.6V11H7v4h2.5v7h4v-7H16l.6-4h-3.1V9c0-.6.4-1 1-1z"/></svg>'
+};
+const telHref = () => "tel:" + AGENT.phone.replace(/\s/g, "");
+const viberHref = () => "viber://chat?number=%2B" + AGENT.viber;
+
+/* ---------- list view ---------- */
+function filtered(){
+  let arr = LISTINGS.filter(l =>
+    (state.deal === "Бүгд" || l.deal === state.deal) &&
+    (!state.type || l.type === state.type) &&
+    (!state.district || l.district === state.district) &&
+    (!state.rooms || (state.rooms === 4 ? l.rooms >= 4 : l.rooms === state.rooms)));
+  if (state.price) { const [a,b] = state.price.split("-").map(Number); arr = arr.filter(l => sortPrice(l) >= a && sortPrice(l) < (b || Infinity)); }
+  const s = state.sort;
+  arr.sort((a,b) => s === "low" ? sortPrice(a) - sortPrice(b) : s === "high" ? sortPrice(b) - sortPrice(a) : s === "big" ? (b.size||0) - (a.size||0) : b.id - a.id);
+  return arr;
+}
+function priceOptions(){
+  const sets = state.deal === "Түрээслэх" ? RENT_PRICES : state.deal === "Худалдах" ? SALE_PRICES : null;
+  if (!sets) return `<option value="">Дээрээс сонгоно уу</option>`;
+  return `<option value="">Бүх үнэ</option>` + sets.map(([a,b,t]) => `<option value="${a}-${b===Infinity?0:b}">${t}</option>`).join("");
+}
+function card(l){
+  const ph = photosOf(l);
+  return `<a class="card" href="#zar-${l.id}">
+    <div class="ph"><img src="${ph[0]}" alt="${esc(l.title)}" loading="lazy">
+      <div class="tag"><span class="pill ${l.deal==="Түрээслэх"?"rent":"sale"}">${esc(l.deal)}</span><span class="pill">${esc(l.type)}</span>${l.sample?'<span class="pill sample">Жишээ</span>':""}</div>
+      <span class="photos-n">#${l.id} · ${ph.length} зураг</span></div>
+    <div class="cb">
+      <div class="price">${priceLabel(l)}</div>
+      ${l.price_note?`<div class="ppm">${esc(l.price_note)}</div>`:""}
+      <div class="ctitle">${esc(l.title)}</div>
+      <div class="loc">${ICON.pin}${esc(l.area_name)}, ${esc(l.district)}</div>
+      <div class="specs">${l.units?(()=>{const u=l.units.flatMap(g=>g.rows),z=u.map(r=>r.size);return `<span><b>${u.length}</b> сонголт</span><span><b>${Math.round(Math.min(...z))}–${Math.round(Math.max(...z))}</b> м²</span>`})():""}${l.rooms?`<span><b>${l.rooms}</b> өрөө</span>`:""}${l.size?`<span><b>${l.size}</b> ${sizeUnit(l)}</span>`:""}${l.floor && l.floor!=="-"?`<span>${esc(l.floor)}${/давхар/.test(l.floor)?"":" давхар"}</span>`:""}</div>
+    </div></a>`;
+}
+function renderList(){
+  document.body.classList.remove("has-mbar");
+  $("#app").innerHTML = `
+  <div class="wrap">
+    <section class="intro">
+      <h1>Эрдэнэт хот дахь байр, хаус, газрын зарууд</h1>
+      <p>Доорх шүүлтүүрээр өөрт тохирох байраа хайгаад, сонирхсон зар дээрээ дарж зураг, дэлгэрэнгүйг үзээрэй. Асуух зүйл байвал шууд залгаарай.</p>
+    </section>
+    <section class="filters" aria-label="Шүүлтүүр">
+      <div class="deal" role="group" aria-label="Зарын төрөл">
+        ${["Бүгд","Худалдах","Түрээслэх"].map(d=>`<button type="button" data-deal="${d}" aria-pressed="${state.deal===d}">${d==="Бүгд"?"Бүгд":d==="Худалдах"?"Худалдах":"Түрээс"}</button>`).join("")}
+      </div>
+      <div class="frow">
+        <div class="field"><label for="fType">Төрөл</label><select id="fType"><option value="">Бүх төрөл</option>${TYPES.map(t=>`<option${state.type===t?" selected":""}>${t}</option>`).join("")}</select></div>
+        <div class="field"><label for="fDist">Байршил</label><select id="fDist"><option value="">Бүх байршил</option>${DISTRICTS.map(t=>`<option${state.district===t?" selected":""}>${t}</option>`).join("")}</select></div>
+        <div class="field"><label for="fPrice">Үнэ</label><select id="fPrice"${state.deal==="Бүгд"?" disabled":""}>${priceOptions()}</select></div>
+        <div class="field"><span class="lbl" id="roomsLbl">Өрөө</span><div class="rooms" role="group" aria-labelledby="roomsLbl">
+          ${[[0,"Бүгд"],[1,"1"],[2,"2"],[3,"3"],[4,"4+"]].map(([v,t])=>`<button type="button" data-rooms="${v}" aria-pressed="${state.rooms===v}">${t}</button>`).join("")}
+        </div></div>
+      </div>
+    </section>
+    <div class="fbar">
+      <div class="count" id="count"></div>
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <button class="linkbtn" id="reset" type="button">Шүүлтүүр арилгах</button>
+        <label class="sort" for="fSort">Эрэмбэ <select id="fSort">
+          <option value="new">Шинэ эхэндээ</option><option value="low">Хямд нь эхэндээ</option><option value="high">Үнэтэй нь эхэндээ</option><option value="big">Том талбайтай</option>
+        </select></label>
+      </div>
+    </div>
+    <div class="grid" id="grid" style="margin-top:14px"></div>
+  </div>`;
+  if (state.price) $("#fPrice").value = state.price;
+  $("#fSort").value = state.sort;
+  $(".deal").onclick = e => { const b = e.target.closest("button"); if(!b) return; state.deal = b.dataset.deal; state.price = ""; renderList(); };
+  $(".rooms").onclick = e => { const b = e.target.closest("button"); if(!b) return; state.rooms = +b.dataset.rooms; document.querySelectorAll(".rooms button").forEach(x=>x.setAttribute("aria-pressed", x===b)); drawGrid(); };
+  $("#fType").onchange = e => { state.type = e.target.value; drawGrid(); };
+  $("#fDist").onchange = e => { state.district = e.target.value; drawGrid(); };
+  $("#fPrice").onchange = e => { state.price = e.target.value; drawGrid(); };
+  $("#fSort").onchange = e => { state.sort = e.target.value; drawGrid(); };
+  $("#reset").onclick = () => { Object.assign(state, {deal:"Бүгд",type:"",district:"",price:"",rooms:0,sort:"new"}); renderList(); };
+  drawGrid();
+}
+function drawGrid(){
+  const arr = filtered();
+  $("#count").innerHTML = `${arr.length} зар <span>олдлоо</span>`;
+  $("#grid").innerHTML = arr.length ? arr.map(card).join("") :
+    `<div class="empty"><b>Ийм зар одоогоор алга байна.</b><br>Шүүлтүүрээ өөрчилж үзээрэй, эсвэл ${esc(AGENT.phone)} дугаарт залгаж хүссэн байраа хэлээрэй.</div>`;
+}
+
+/* ---------- detail view ---------- */
+function renderDetail(l){
+  const ph = photosOf(l); let cur = 0;
+  const facts = [
+    ["Төрөл", l.type], ["Зарын төрөл", l.deal],
+    ["Хот", l.district], ["Байршил", l.area_name],
+    l.size ? ["Талбай", `${l.size} ${sizeUnit(l)}`] : null, l.rooms ? ["Өрөө", `${l.rooms} өрөө`] : null,
+    l.floor && l.floor !== "-" ? ["Давхар", l.floor] : null, l.year ? ["Ашиглалтад орсон", `${l.year} он`] : null,
+    l.payment ? ["Төлбөрийн нөхцөл", l.payment] : null
+  ].filter(Boolean);
+  $("#app").innerHTML = `
+  <div class="wrap">
+    <a class="back" href="#">← Бүх зар руу буцах</a>
+    <div class="detail">
+      <div class="gallery">
+        <div class="gmain"><img id="gimg" src="${ph[0]}" alt="${esc(l.title)}">
+          ${ph.length>1?`<button class="gnav prev" type="button" aria-label="Өмнөх зураг">‹</button><button class="gnav next" type="button" aria-label="Дараагийн зураг">›</button>`:""}
+          <span class="gcount" id="gcount">1 / ${ph.length}</span></div>
+        <div class="thumbs">${ph.map((p,i)=>`<button type="button" data-i="${i}" aria-current="${i===0}" aria-label="Зураг ${i+1}"><img src="${p}" alt=""></button>`).join("")}</div>
+        ${l.sample?'<p class="note">Энэ бол жишээ зар. Зургууд нь бодит зураг орохоос өмнөх загвар зураг.</p>':""}
+      </div>
+      <div class="more">
+        <div class="desc"><h2>Тайлбар</h2><p>${esc(l.description)}</p></div>
+        ${l.units?`<div class="units"><h2>Зарагдах айлууд</h2>${l.units.map(g=>`<h3>${esc(g.name)}</h3><table><colgroup><col style="width:22%"><col style="width:20%"><col style="width:28%"><col></colgroup><thead><tr><th>${esc((l.units_head||[])[0]||"Тоот")}</th><th>Давхар</th><th class="num">Талбай</th><th>${esc((l.units_head||[])[1]||"Төрөл")}</th></tr></thead><tbody>${g.rows.map(r=>`<tr><td><b>${esc(r.no)}</b></td><td>${esc(r.floor||"")}</td><td class="num">${r.size} м²</td><td>${r.kind?`<span class="kind">${esc(r.kind)}</span>`:""}</td></tr>`).join("")}</tbody></table>`).join("")}</div>`:""}
+        ${l.features?.length?`<div class="feat"><h2>Онцлог</h2><ul>${l.features.map(f=>`<li>${esc(f)}</li>`).join("")}</ul></div>`:""}
+      </div>
+      <aside class="info">
+        <div class="dhead">
+          <div style="display:flex;gap:6px;flex-wrap:wrap"><span class="pill ${l.deal==="Түрээслэх"?"rent":"sale"}">${esc(l.deal)}</span><span class="pill" style="background:var(--accent-soft);color:var(--ink)">${esc(l.type)}</span></div>
+          <h1>${esc(l.title)}</h1>
+          <div class="loc">${ICON.pin}${esc(l.area_name)}, ${esc(l.district)}</div>
+          <div class="dprice">${priceLabel(l)}</div>
+          <div class="ppm">${l.price_m2 ? `1м² нь ${money(l.price_m2)}${rentSfx(l)} · нийт үнийг утсаар лавлана уу` : money(l.price)}${l.price_note?`<br>${esc(l.price_note)}`:""}</div>
+        </div>
+        <dl class="facts" style="margin:0">${facts.map(([k,v])=>`<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
+        ${contactBox(l)}
+      </aside>
+    </div>
+  </div>
+  <div class="mbar"><a class="btn btn-call" href="${telHref()}">${ICON.phone}${esc(AGENT.phone)}</a><a class="btn btn-viber" href="${viberHref()}">${ICON.viber}Viber</a></div>`;
+  document.body.classList.add("has-mbar");
+  const show = i => { cur = (i + ph.length) % ph.length; $("#gimg").src = ph[cur]; $("#gcount").textContent = `${cur+1} / ${ph.length}`;
+    document.querySelectorAll(".thumbs button").forEach((b,j)=>b.setAttribute("aria-current", j===cur)); };
+  $(".thumbs").onclick = e => { const b = e.target.closest("button"); if (b) show(+b.dataset.i); };
+  $(".gnav.prev") && ($(".gnav.prev").onclick = () => show(cur-1));
+  $(".gnav.next") && ($(".gnav.next").onclick = () => show(cur+1));
+  let sx = null; const g = $(".gmain");
+  g.addEventListener("touchstart", e => sx = e.touches[0].clientX, {passive:true});
+  g.addEventListener("touchend", e => { if (sx === null) return; const dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 40) show(cur + (dx < 0 ? 1 : -1)); sx = null; });
+  bindCopy();
+  window.scrollTo(0,0);
+}
+function contactBox(l){
+  return `<div class="contact">
+    <div class="agent"><div class="avatar">${esc(AGENT.name[0])}</div><div><b>${esc(AGENT.name)}</b><span>${esc(AGENT.title)}</span></div></div>
+    <div class="phone"><strong>${esc(AGENT.phone)}</strong><button class="copy" type="button" data-copy="${esc(AGENT.phone)}">Хуулах</button></div>
+    <div class="cta">
+      <a class="btn btn-call" href="${telHref()}">${ICON.phone}Залгах</a>
+      <div class="cta2"><a class="btn btn-viber" href="${viberHref()}">${ICON.viber}Viber</a><a class="btn btn-fb" href="${esc(AGENT.facebook)}" target="_blank" rel="noopener">${ICON.fb}Facebook</a></div>
+    </div>
+    <p class="note">Залгах товч ажиллахгүй бол дээрх дугаарыг хуулж аваад залгана уу.</p>
+    <p class="note">Залгахдаа <b>зарын дугаар #${l.id}</b> гэж хэлбэл таны сонирхсон байрыг шууд мэднэ.</p>
+  </div>`;
+}
+function bindCopy(){
+  document.querySelectorAll("[data-copy]").forEach(b => b.onclick = async () => {
+    try { await navigator.clipboard.writeText(b.dataset.copy); b.textContent = "Хуулсан"; }
+    catch { const s = b.previousElementSibling; const r = document.createRange(); r.selectNodeContents(s); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); b.textContent = "Сонгосон"; }
+    setTimeout(()=> b.textContent = "Хуулах", 1800);
+  });
+}
+
+/* ---------- router ---------- */
+function route(){
+  const m = location.hash.match(/^#zar-(\d+)$/);
+  const l = m && LISTINGS.find(x => x.id === +m[1]);
+  l ? renderDetail(l) : renderList();
+}
+function initChrome(){
+  $("#agentTag").textContent = AGENT.title;
+  $("#topPhone").textContent = AGENT.phone;
+  $("#topCall").href = telHref();
+  $("#yr").textContent = new Date().getFullYear();
+  $("#footAgent").textContent = AGENT.name + ", " + AGENT.title.toLowerCase();
+  $("#footContact").textContent = "Утас: " + AGENT.phone;
+}
+window.addEventListener("hashchange", route);
+initChrome(); route();
+</script>
+
+</body>
+</html>
