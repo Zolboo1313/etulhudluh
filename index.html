@@ -205,6 +205,12 @@ const AGENT = {
       photos: ["zurag/1.jpg", "zurag/2.jpg"]  — хоосон бол жишээ зураг гарна
    ===================================================================== */
 const LISTINGS = [
+  { id: 34, deal: "Худалдах", type: "Газар", district: "Эрдэнэт", area_name: "Ар булаг",
+    title: "Ар булагт 4 айлын газар, шовгор байшинтай", price: null, rooms: 0, size: null, floor: "", year: null,
+    price_note: "Цахилгаантай · 2032 он хүртэл эзэмшинэ",
+    payment: "", features: ["4 айлын газар", "Шовгор байшинтай", "Цахилгаантай", "Эзэмших эрхтэй (2032 он хүртэл)", "Ойн дэргэд, байгалийн сайхан орчинд"],
+    description: "Ар булагт 4 айлын газар шовгор байшинтайгаа зарагдана. Цахилгаантай. Газар эзэмших эрх 2032 он хүртэл.\n\nҮнэ тохиролцоно, утсаар лавлана уу.",
+    photos: [1,2,3].map(n => "zurag/ar-bulag-gazar/" + n + ".jpg") },
   { id: 33, deal: "Худалдах", type: "Орон сууц", district: "Эрдэнэт", area_name: "Дэнж, Баян өндөр хотхон",
     title: "Дэнж, Баян өндөр хотхон: 1-р давхарт байр, хямд", price: 92000000, rooms: 0, size: null, floor: "1-р давхар", year: null,
     price_note: "Хямд үнэтэй",
@@ -435,8 +441,8 @@ function short(n){
   return money(n);
 }
 const rentSfx = l => l.deal === "Түрээслэх" ? " / сар" : "";
-const priceLabel = l => l.price_m2 ? short(l.price_m2) + `<small> / м²${rentSfx(l)}</small>` : short(l.price) + (rentSfx(l) ? `<small>${rentSfx(l)}</small>` : "");
-const sortPrice = l => l.price ?? (l.price_m2 * (l.size || 1));   // зөвхөн эрэмбэ, шүүлтүүрт ашиглана
+const priceLabel = l => (l.price == null && !l.price_m2) ? `<small>Үнэ тохиролцоно</small>` : l.price_m2 ? short(l.price_m2) + `<small> / м²${rentSfx(l)}</small>` : short(l.price) + (rentSfx(l) ? `<small>${rentSfx(l)}</small>` : "");
+const sortPrice = l => l.price ?? ((l.price_m2 || 0) * (l.size || 1));   // зөвхөн эрэмбэ, шүүлтүүрт ашиглана
 const sizeUnit = l => l.type === "Газар" ? "м² газар" : "м²";
 
 /* ---------- placeholder photos (shown until real photos are added) ---------- */
@@ -596,7 +602,7 @@ function renderDetail(l){
           <h1>${esc(l.title)}</h1>
           <div class="loc">${ICON.pin}${esc(l.area_name)}, ${esc(l.district)}</div>
           <div class="dprice">${priceLabel(l)}</div>
-          <div class="ppm">${l.price_m2 ? `1м² нь ${money(l.price_m2)}${rentSfx(l)} · нийт үнийг утсаар лавлана уу` : money(l.price)}${l.price_note?`<br>${esc(l.price_note)}`:""}</div>
+          <div class="ppm">${l.price_m2 ? `1м² нь ${money(l.price_m2)}${rentSfx(l)} · нийт үнийг утсаар лавлана уу` : l.price == null ? "Үнийг утсаар лавлана уу" : money(l.price)}${l.price_note?`<br>${esc(l.price_note)}`:""}</div>
         </div>
         <dl class="facts" style="margin:0">${facts.map(([k,v])=>`<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
         ${contactBox(l)}
