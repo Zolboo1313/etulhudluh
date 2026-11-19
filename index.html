@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Эрдэнэт хот дахь байр, хаус, газрын зарууд. Агент Золбоо, утас 8836 0522.">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<script>window.SMALL_PHOTOS=true;</script>
 <script data-goatcounter="https://etulhudluh.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>window.addEventListener("hashchange",function(){var g=window.goatcounter;if(g&&g.count&&/^#zar-\d+$/.test(location.hash))g.count({path:"/zar/"+location.hash.slice(5),title:document.title});});</script>
 </head>
@@ -12,7 +13,7 @@
 <title>Etulhudluh.mn</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Inter:wght@400;500;600;700&display=swap">
 <style>
 /* Layout: sticky search bar over a responsive card grid; a listing opens as its own full view (#zar-ID). */
 :root{
@@ -473,6 +474,7 @@ function samplePhoto(l, i){
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${sky1}"/><stop offset="1" stop-color="${sky2}"/></linearGradient></defs><rect width="400" height="300" fill="url(#g)"/>${body.replace(/fill="hsl\(\d+ 70% \d+%\)"/, 'fill="url(#g)"')}</svg>`;
   return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
 }
+const sm = p => (window.SMALL_PHOTOS && /^zurag\//.test(p)) ? p.replace(/^zurag\//, "zurag-s/") : p;   // жижиг хувилбар (зөвхөн GitHub сайтад)
 const photosOf = l => (l.photos && l.photos.length) ? l.photos : [0,1,2,3].map(i => samplePhoto(l, i));
 
 /* ---------- icons ---------- */
@@ -505,7 +507,7 @@ function priceOptions(){
 function card(l){
   const ph = photosOf(l);
   return `<a class="card" href="#zar-${l.id}">
-    <div class="ph"><img src="${ph[0]}" alt="${esc(l.title)}" loading="lazy">
+    <div class="ph"><img src="${sm(ph[0])}" alt="${esc(l.title)}" loading="lazy" decoding="async">
       <div class="tag"><span class="pill ${l.deal==="Түрээслэх"?"rent":"sale"}">${esc(l.deal)}</span><span class="pill">${esc(l.type)}</span>${l.sample?'<span class="pill sample">Жишээ</span>':""}</div>
       <span class="photos-n">#${l.id} · ${ph.length} зураг</span></div>
     <div class="cb">
@@ -584,7 +586,7 @@ function renderDetail(l){
         <div class="gmain"><img id="gimg" src="${ph[0]}" alt="${esc(l.title)}">
           ${ph.length>1?`<button class="gnav prev" type="button" aria-label="Өмнөх зураг">‹</button><button class="gnav next" type="button" aria-label="Дараагийн зураг">›</button>`:""}
           <span class="gcount" id="gcount">1 / ${ph.length}</span></div>
-        <div class="thumbs">${ph.map((p,i)=>`<button type="button" data-i="${i}" aria-current="${i===0}" aria-label="Зураг ${i+1}"><img src="${p}" alt=""></button>`).join("")}</div>
+        <div class="thumbs">${ph.map((p,i)=>`<button type="button" data-i="${i}" aria-current="${i===0}" aria-label="Зураг ${i+1}"><img src="${sm(p)}" alt="" loading="lazy" decoding="async"></button>`).join("")}</div>
         ${l.sample?'<p class="note">Энэ бол жишээ зар. Зургууд нь бодит зураг орохоос өмнөх загвар зураг.</p>':""}
       </div>
       <div class="more">
